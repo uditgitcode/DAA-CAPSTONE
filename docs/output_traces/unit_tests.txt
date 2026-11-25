@@ -1,0 +1,22 @@
+test_dijkstra_matches_floyd_warshall (tests.test_courier.TestGraph.test_dijkstra_matches_floyd_warshall) ... ok
+test_disconnected (tests.test_courier.TestGraph.test_disconnected) ... ok
+test_known_small_answers (tests.test_courier.TestGraph.test_known_small_answers) ... ok
+test_negative_edge_rejected (tests.test_courier.TestGraph.test_negative_edge_rejected) ... ok
+test_path_reconstruction_length (tests.test_courier.TestGraph.test_path_reconstruction_length) ... ok
+test_dp_equals_bruteforce (tests.test_courier.TestKnapsack.test_dp_equals_bruteforce) ... ok
+test_dp_never_worse_than_greedy (tests.test_courier.TestKnapsack.test_dp_never_worse_than_greedy) ... ok
+test_greedy_counterexample (tests.test_courier.TestKnapsack.test_greedy_counterexample) ... ok
+test_zero_capacity_and_oversized (tests.test_courier.TestKnapsack.test_zero_capacity_and_oversized) ... ok
+test_all_trips_deliver_everything (tests.test_courier.TestPipeline.test_all_trips_deliver_everything) ... ok
+test_small_end_to_end (tests.test_courier.TestPipeline.test_small_end_to_end) ... ok
+test_all_sorters_match_builtin (tests.test_courier.TestSorting.test_all_sorters_match_builtin) ... ok
+test_merge_sort_is_stable (tests.test_courier.TestSorting.test_merge_sort_is_stable) ... ok
+test_priority_tiebreak (tests.test_courier.TestSorting.test_priority_tiebreak) ... ok
+test_heuristics_vs_optimal (tests.test_courier.TestTSP.test_heuristics_vs_optimal) ... ok
+test_lateness_repair_never_worse (tests.test_courier.TestTSP.test_lateness_repair_never_worse) ... ok
+test_tour_is_valid_permutation (tests.test_courier.TestTSP.test_tour_is_valid_permutation) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.081s
+
+OK

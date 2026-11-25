@@ -1,0 +1,115 @@
+==============================================================================
+ SMART COURIER PLANNER  |  dataset: small_city
+==============================================================================
+ Locations (graph nodes) : 10   (node 0 = depot)
+ Road segments (edges)   : 16
+ Parcels                 : 12  total 104 kg
+ Vehicle capacity        : 50 kg
+
+[PHASE 3] Graph representation (adjacency list, km)
+    0 Depot (Central Hub -> 1:2.5, 4:3.8, 6:4.4, 7:4.1
+    1 MG Road            -> 0:2.5, 2:3, 3:3.2, 8:4.3, 9:3.6
+    2 Park Street        -> 1:3, 3:3.4, 9:4.2
+    3 Lake Town          -> 1:3.2, 2:3.4, 4:3.3
+    4 Salt Lake          -> 0:3.8, 3:3.3, 5:3.7
+    5 Old Market         -> 4:3.7, 6:3.3
+    6 Station Road       -> 0:4.4, 5:3.3, 7:3.3
+    7 Tech Park          -> 0:4.1, 6:3.3, 8:3.2
+    8 University         -> 1:4.3, 7:3.2, 9:2.9
+    9 Riverside          -> 1:3.6, 2:4.2, 8:2.9
+
+==============================================================================
+ TRIP 1
+==============================================================================
+
+[PHASE 2] Parcels sorted by Merge Sort  key=(deadline asc, priority desc, kg asc)
+#   Parcel  Deadline(h)  Priority  Kg  Value  Destination   
+--  ------  -----------  --------  --  -----  --------------
+1   P004    1            4         5   60     3:Lake Town   
+2   P001    2            5         10  67     2:Park Street 
+3   P011    2            4         11  57     5:Old Market  
+4   P007    2            3         9   47     8:University  
+5   P005    3            5         12  64     9:Riverside   
+6   P009    3            4         4   54     1:MG Road     
+7   P002    4            3         8   41     5:Old Market  
+8   P008    5            2         14  29     6:Station Road
+9   P003    6            2         15  26     7:Tech Park   
+10  P012    6            1         3   16     9:Riverside   
+11  P010    7            2         6   23     2:Park Street 
+12  P006    8            1         7   10     4:Salt Lake   
+
+[PHASE 2] 0/1 Knapsack DP table dp[i][c] (every 5 kg shown; full table 13x51)
+i / item     c=0  c=5  c=10  c=15  c=20  c=25  c=30  c=35  c=40  c=45  c=50
+-----------  ---  ---  ----  ----  ----  ----  ----  ----  ----  ----  ----
+0 (none)     0    0    0     0     0     0     0     0     0     0     0   
+1 P004 w=5   0    60   60    60    60    60    60    60    60    60    60  
+2 P001 w=10  0    60   67    127   127   127   127   127   127   127   127 
+3 P011 w=11  0    60   67    127   127   127   184   184   184   184   184 
+4 P007 w=9   0    60   67    127   127   174   184   231   231   231   231 
+5 P005 w=12  0    60   67    127   127   174   191   231   248   248   295 
+6 P009 w=4   0    60   114   127   181   181   238   245   292   302   302 
+7 P002 w=8   0    60   114   127   181   181   238   245   292   302   343 
+8 P008 w=14  0    60   114   127   181   181   238   245   292   302   343 
+9 P003 w=15  0    60   114   127   181   181   238   245   292   302   343 
+10 P012 w=3  0    60   114   130   181   197   238   261   292   318   343 
+11 P010 w=6  0    60   114   137   181   204   238   261   292   318   343 
+12 P006 w=7  0    60   114   137   181   204   238   261   292   318   343 
+  Optimal value dp[n][W] = 343
+
+[PHASE 2] Packing plan - Trip 1
+Parcel  Kg  Priority  Deadline  Value  Destination
+------  --  --------  --------  -----  -----------
+P004    5   4         1         60     Lake Town  
+P001    10  5         2         67     Park Street
+P011    11  4         2         57     Old Market 
+P005    12  5         3         64     Riverside  
+P009    4   4         3         54     MG Road    
+P002    8   3         4         41     Old Market 
+  Loaded 6 parcels | 50/50 kg (100.0% full) | total value 343
+  Left for next trip: P007, P008, P003, P012, P010, P006
+
+[PHASE 3] Dijkstra shortest paths from depot to each stop
+Node  Name         km   Shortest road path
+----  -----------  ---  ------------------
+3     Lake Town    5.7  0 > 1 > 3         
+2     Park Street  5.5  0 > 1 > 2         
+5     Old Market   7.5  0 > 4 > 5         
+9     Riverside    6.1  0 > 1 > 9         
+1     MG Road      2.5  0 > 1             
+
+  Stop-to-stop distance matrix (km, from Dijkstra)
+from\to  0    3    2     5     9     1   
+-------  ---  ---  ----  ----  ----  ----
+0        0.0  5.7  5.5   7.5   6.1   2.5 
+3        5.7  0.0  3.4   7.0   6.8   3.2 
+2        5.5  3.4  0.0   10.4  4.2   3.0 
+5        7.5  7.0  10.4  0.0   12.7  10.0
+9        6.1  6.8  4.2   12.7  0.0   3.6 
+1        2.5  3.2  3.0   10.0  3.6   0.0 
+
+[PHASE 3] Route (Nearest-Neighbour TSP approximation)
+  NN order   : 0 -> 1 -> 2 -> 3 -> 9 -> 5 -> 0
+  NN length  : 35.90 km
+  2-opt order: 0 -> 1 -> 9 -> 2 -> 3 -> 5 -> 0
+  2-opt length: 28.20 km (2 improving swaps, 21.4% shorter)
+
+  Delivery schedule (30 km/h, 5 min per stop)
+Leg  Stops  Arrive at         km   ETA(h)  Parcels    Deadline  Road path
+---  -----  ----------------  ---  ------  ---------  --------  ---------
+1    0->1   MG Road           2.5  0.08    P009       on time   0>1      
+2    1->9   Riverside         3.6  0.29    P005       on time   1>9      
+3    9->2   Park Street       4.2  0.51    P001       on time   9>2      
+4    2->3   Lake Town         3.4  0.71    P004       on time   2>3      
+5    3->5   Old Market        7.0  1.02    P011,P002  on time   3>4>5    
+6    5->0   Depot (Central H  7.5  1.36    (return)             5>4>0    
+  TOTAL ROUTE LENGTH: 28.20 km   late parcels: 0
+
+[PHASE 4] Runtime of each step (ms)
+Step                   ms   
+---------------------  -----
+sorting                0.270
+knapsack_dp            0.078
+dijkstra               0.035
+tsp_nearest_neighbour  0.014
+two_opt                0.010
+  total: 0.407 ms

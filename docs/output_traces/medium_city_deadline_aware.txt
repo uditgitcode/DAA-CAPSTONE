@@ -1,0 +1,144 @@
+==============================================================================
+ SMART COURIER PLANNER  |  dataset: medium_city
+==============================================================================
+ Locations (graph nodes) : 40   (node 0 = depot)
+ Road segments (edges)   : 77
+ Parcels                 : 60  total 746 kg
+ Vehicle capacity        : 200 kg
+
+==============================================================================
+ TRIP 1
+==============================================================================
+
+[PHASE 2] Parcels sorted by Merge Sort  key=(deadline asc, priority desc, kg asc)
+#   Parcel  Deadline(h)  Priority  Kg  Value  Destination  
+--  ------  -----------  --------  --  -----  -------------
+1   P017    1            5         6   70     11:Chowk 11  
+2   P027    1            3         5   50     33:Heights 33
+3   P007    1            3         17  50     13:Nagar 13  
+4   P020    1            3         18  50     10:Layout 10 
+5   P001    1            3         23  50     10:Layout 10 
+6   P051    1            2         3   40     7:Plaza 7    
+7   P055    1            2         3   40     28:Park 28   
+8   P048    1            2         15  40     36:Sector 36 
+9   P028    1            2         25  40     29:Enclave 29
+10  P002    2            5         10  67     34:Layout 34 
+11  P033    2            4         1   57     36:Sector 36 
+12  P016    2            4         13  57     30:Vihar 30  
+13  P039    2            2         22  37     5:Enclave 5  
+14  P040    2            2         22  37     14:Colony 14 
+15  P029    2            1         6   27     10:Layout 10 
+16  P037    3            4         7   54     36:Sector 36 
+17  P018    3            4         19  54     10:Layout 10 
+18  P021    3            3         24  44     1:Nagar 1    
+19  P054    3            2         3   34     21:Heights 21
+20  P060    3            2         6   34     8:Gardens 8  
+  ... (40 more)
+
+[PHASE 2] Packing plan - Trip 1
+Parcel  Kg  Priority  Deadline  Value  Destination
+------  --  --------  --------  -----  -----------
+P017    6   5         1         70     Chowk 11   
+P027    5   3         1         50     Heights 33 
+P051    3   2         1         40     Plaza 7    
+P055    3   2         1         40     Park 28    
+P002    10  5         2         67     Layout 34  
+P033    1   4         2         57     Sector 36  
+P016    13  4         2         57     Vihar 30   
+P029    6   1         2         27     Layout 10  
+P037    7   4         3         54     Sector 36  
+P054    3   2         3         34     Heights 21 
+P060    6   2         3         34     Gardens 8  
+P044    6   5         4         61     Gardens 32 
+P022    7   4         4         51     Park 28    
+P006    13  4         4         51     Park 16    
+P008    9   3         4         41     Colony 2   
+P034    11  3         4         41     Enclave 29 
+P010    3   2         4         31     Sector 24  
+P023    9   2         4         31     Colony 2   
+P050    3   1         4         21     Heights 33 
+P036    8   3         5         39     Heights 33 
+P025    2   5         6         56     Heights 9  
+P012    16  5         6         56     Nagar 1    
+P038    4   2         6         26     Market 27  
+P058    11  5         7         53     Nagar 1    
+P015    3   4         7         43     Layout 22  
+P052    9   4         7         43     Sector 12  
+P032    2   4         8         40     Vihar 18   
+P042    9   4         8         40     Layout 10  
+P057    9   4         8         40     Enclave 5  
+P030    2   2         8         20     Sector 36  
+  Loaded 30 parcels | 199/200 kg (99.5% full) | total value 1314
+  Left for next trip: P007, P020, P001, P048, P028, P039, P040, P018, P021, P003, P005, P056, P031, P059, P049, P019, P041, P009, P046, P047, P004, P043, P014, P026, P024 ...
+
+[PHASE 3] Dijkstra shortest paths from depot to each stop
+Node  Name        km    Shortest road path                  
+----  ----------  ----  ------------------------------------
+11    Chowk 11    16.4  0 > 33 > 16 > 25 > 12 > 26 > 11     
+33    Heights 33  1.8   0 > 33                              
+7     Plaza 7     7.8   0 > 35 > 27 > 7                     
+28    Park 28     12.5  0 > 35 > 39 > 20 > 23 > 28          
+34    Layout 34   15.7  0 > 33 > 19 > 30 > 22 > 34          
+36    Sector 36   14.7  0 > 35 > 39 > 20 > 23 > 15 > 36     
+30    Vihar 30    7.9   0 > 33 > 19 > 30                    
+10    Layout 10   3.0   0 > 10                              
+21    Heights 21  5.3   0 > 3 > 21                          
+8     Gardens 8   14.7  0 > 3 > 21 > 1 > 8                  
+32    Gardens 32  7.7   0 > 33 > 19 > 32                    
+16    Park 16     4.2   0 > 33 > 16                         
+2     Colony 2    12.2  0 > 33 > 16 > 25 > 2                
+29    Enclave 29  15.5  0 > 35 > 39 > 20 > 23 > 15 > 36 > 29
+24    Sector 24   9.2   0 > 35 > 27 > 24                    
+9     Heights 9   12.2  0 > 35 > 27 > 24 > 9                
+1     Nagar 1     9.3   0 > 3 > 21 > 1                      
+27    Market 27   6.0   0 > 35 > 27                         
+22    Layout 22   10.5  0 > 33 > 19 > 30 > 22               
+12    Sector 12   10.3  0 > 33 > 16 > 25 > 12               
+18    Vihar 18    16.2  0 > 3 > 21 > 1 > 13 > 18            
+5     Enclave 5   15.8  0 > 35 > 39 > 20 > 23 > 15 > 5      
+
+[PHASE 3] Route (Nearest-Neighbour TSP approximation)
+  NN order   : 0 -> 33 -> 10 -> 16 -> 21 -> 1 -> 8 -> 18 -> 2 -> 12 -> 11 -> 32 -> ... (8 more) -> 5 -> 29 -> 36 -> 0
+  NN length  : 119.72 km
+  [PHASE 4 optimisation] 2-opt tour + lateness-repair (Or-opt relocation)
+  final order: 0 -> 33 -> 10 -> 21 -> 32 -> 30 -> 34 -> 9 -> 24 -> 7 -> 28 -> 36 -> ... (8 more) -> 12 -> 22 -> 5 -> 0
+  final length: 199.81 km   (22 relocations, late parcels 9 -> 5)
+
+  Delivery schedule (30 km/h, 5 min per stop)
+Leg  Stops   Arrive at         km    ETA(h)  Parcels         Deadline  Road path               
+---  ------  ----------------  ----  ------  --------------  --------  ------------------------
+1    0->33   Heights 33        1.8   0.06    P027,P050,P036  on time   0>33                    
+2    33->10  Layout 10         1.2   0.18    P029,P042       on time   33>10                   
+3    10->21  Heights 21        3.2   0.37    P054            on time   10>21                   
+4    21->32  Gardens 32        9.2   0.76    P044            on time   21>10>19>32             
+5    32->30  Vihar 30          1.7   0.90    P016            on time   32>30                   
+6    30->34  Layout 34         7.8   1.25    P002            on time   30>22>34                
+7    34->9   Heights 9         4.6   1.48    P025            on time   34>9                    
+8    9->24   Sector 24         3.0   1.67    P010            on time   9>24                    
+9    24->7   Plaza 7           2.4   1.83    P051            LATE      24>7                    
+10   7->28   Park 28           10.7  2.27    P055,P022       LATE      7>27>39>20>23>28        
+11   28->36  Sector 36         5.9   2.55    P033,P037,P030  LATE      28>15>36                
+12   36->29  Enclave 29        0.8   2.66    P034            on time   36>29                   
+13   29->27  Market 27         11.8  3.14    P038            on time   29>36>15>23>20>39>27    
+14   27->16  Park 16           10.1  3.56    P006            on time   27>35>0>33>16           
+15   16->2   Colony 2          8.0   3.91    P008,P023       on time   16>25>2                 
+16   2->11   Chowk 11          13.1  4.43    P017            LATE      2>38>12>26>11           
+17   11->8   Gardens 8         25.7  5.37    P060            LATE      11>26>12>38>2>17>1>8    
+18   8->18   Vihar 18          1.4   5.50    P032            on time   8>18                    
+19   18->1   Nagar 1           6.8   5.81    P012,P058       on time   18>13>1                 
+20   1->12   Sector 12         14.2  6.37    P052            on time   1>17>2>38>12            
+21   12->22  Layout 22         14.2  6.93    P015            on time   12>25>16>19>30>22       
+22   22->5   Enclave 5         26.3  7.88    P057            on time   22>30>19>33>0>35>39>20>2
+23   5->0    Depot (Central H  15.8  8.49    (return)                  5>15>23>20>39>35>0      
+  TOTAL ROUTE LENGTH: 199.81 km   late parcels: 5
+
+[PHASE 4] Runtime of each step (ms)
+Step                   ms    
+---------------------  ------
+sorting                0.086 
+knapsack_dp            1.213 
+dijkstra               0.636 
+tsp_nearest_neighbour  0.053 
+two_opt                0.094 
+lateness_repair        23.030
+  total: 25.113 ms
