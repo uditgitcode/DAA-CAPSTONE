@@ -1,0 +1,37 @@
+{
+ "name": "small_city",
+ "vehicle_capacity": 50,
+ "depot": 0,
+ "meta": {"description": "Hand-made 10-node city used for step-by-step verification"},
+ "locations": [
+  {"node_id": 0, "name": "Depot (Central Hub)", "x": 5.0, "y": 5.0},
+  {"node_id": 1, "name": "MG Road", "x": 7.0, "y": 6.0},
+  {"node_id": 2, "name": "Park Street", "x": 9.0, "y": 8.0},
+  {"node_id": 3, "name": "Lake Town", "x": 6.0, "y": 9.0},
+  {"node_id": 4, "name": "Salt Lake", "x": 3.0, "y": 8.0},
+  {"node_id": 5, "name": "Old Market", "x": 1.0, "y": 5.0},
+  {"node_id": 6, "name": "Station Road", "x": 2.0, "y": 2.0},
+  {"node_id": 7, "name": "Tech Park", "x": 5.0, "y": 1.0},
+  {"node_id": 8, "name": "University", "x": 8.0, "y": 2.0},
+  {"node_id": 9, "name": "Riverside", "x": 10.0, "y": 4.0}
+ ],
+ "edges": [
+  [0, 1, 2.5], [0, 4, 3.8], [0, 6, 4.4], [0, 7, 4.1], [1, 2, 3.0], [1, 3, 3.2],
+  [1, 8, 4.3], [1, 9, 3.6], [2, 3, 3.4], [2, 9, 4.2], [3, 4, 3.3], [4, 5, 3.7],
+  [5, 6, 3.3], [6, 7, 3.3], [7, 8, 3.2], [8, 9, 2.9]
+ ],
+ "parcels": [
+  {"parcel_id": "P001", "destination": 2, "weight": 10, "priority": 5, "deadline": 2, "value": 0},
+  {"parcel_id": "P002", "destination": 5, "weight": 8,  "priority": 3, "deadline": 4, "value": 0},
+  {"parcel_id": "P003", "destination": 7, "weight": 15, "priority": 2, "deadline": 6, "value": 0},
+  {"parcel_id": "P004", "destination": 3, "weight": 5,  "priority": 4, "deadline": 1, "value": 0},
+  {"parcel_id": "P005", "destination": 9, "weight": 12, "priority": 5, "deadline": 3, "value": 0},
+  {"parcel_id": "P006", "destination": 4, "weight": 7,  "priority": 1, "deadline": 8, "value": 0},
+  {"parcel_id": "P007", "destination": 8, "weight": 9,  "priority": 3, "deadline": 2, "value": 0},
+  {"parcel_id": "P008", "destination": 6, "weight": 14, "priority": 2, "deadline": 5, "value": 0},
+  {"parcel_id": "P009", "destination": 1, "weight": 4,  "priority": 4, "deadline": 3, "value": 0},
+  {"parcel_id": "P010", "destination": 2, "weight": 6,  "priority": 2, "deadline": 7, "value": 0},
+  {"parcel_id": "P011", "destination": 5, "weight": 11, "priority": 4, "deadline": 2, "value": 0},
+  {"parcel_id": "P012", "destination": 9, "weight": 3,  "priority": 1, "deadline": 6, "value": 0}
+ ]
+}
