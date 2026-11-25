@@ -1,0 +1,4 @@
+# The planner (main.py, courier/) uses only the Python standard library.
+# These are needed for benchmark charts and screenshot generation.
+matplotlib>=3.7
+Pillow>=9.0
